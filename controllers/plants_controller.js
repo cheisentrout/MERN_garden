@@ -25,10 +25,36 @@ plants.get('/', (req, res) => {
 /*=========================  U  =============================
 ======================== UPDATE ROUTE ======================*/
 
-
+plants.put('/:id', (req, res) => {
+  Plant.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true },
+    (err, updatedPlant) => {
+      if (err) {
+        res.send(err)
+      } else {
+        Plant.find({}, (err, foundPlant) => {
+          res.json(foundPlant)
+        })
+      }
+    }
+  )
+})
 
 /*=========================  D  =============================
 ====================== DELETE ROUTE ========================*/
+
+plants.delete('/:id', (req, res) => {
+  Plant.findByIdAndRemove(
+    req.params.id,
+    (err, deletedPlant) => {
+      Plant.find({}, (err, foundPlant) => {
+        res.json(foundPlant)
+      })
+    }
+  )
+})
 
 
 module.exports = plants
