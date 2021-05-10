@@ -1,6 +1,23 @@
 const express = require('express')
 const plants = express.Router()
 const Plant = require('../models/plants.js')
+const plantSeed = require('../models/plants_seed.js')
+
+/*=========================  S  =============================
+======================== SEED ROUTE ========================*/
+
+// plants.get('/seed', (req, res) => {
+//   Plant.insertMany(plantSeed, (err, manyPlants) => {
+//     if (err) {
+//       res.send(err)
+//       console.log(err);
+//     } else {
+//       res.send(manyPlants)
+//       console.log(manyPlants);
+//     }
+//     res.redirect('/plants')
+//   })
+// })
 
 /*==========================  C  ============================
 ======================== CREATE ROUTE ======================*/
