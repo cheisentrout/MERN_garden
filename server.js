@@ -16,6 +16,27 @@ mongoose.connect(MONGODB_URI, {
   useFindAndModify: false
 })
 
+/*============= MIDDLEWARE ==============*/
+
+//Use this middleware to return JSON data, rather than res.send/urlencoded which returns HTML:
+app.use(express.json())
+app.use(express.static('public'))
+
+/*============ CONTROLLERS =============*/
+
+
+/*============ ROUTES =============*/
+
+app.get('/boo', (req, res) => {
+  res.send('Hello world')
+})
+
+/*============== LISTENER ================*/
+
+app.listen(PORT, () => {
+  console.log('listening on port ' + PORT);
+})
+
 /*============ MONGOOSE ERR/SUCCESS =============*/
 
 mongoose.connection.on('error', err =>
@@ -28,24 +49,3 @@ mongoose.connection.on('connected', () =>
   console.log('mongo connected: ', MONGODB_URI)
 )
 mongoose.connection.on('disconnected', () => console.log('mongo disconnected'))
-
-/*============= MIDDLEWARE ==============*/
-
-//Use this middleware to return JSON data, rather than res.send/urlencoded which returns HTML:
-app.use(express.json())
-app.use(express.static('public'))
-
-/*============ CONTROLLERS =============*/
-
-
-/*============ ROUTES =============*/
-
-app.get('/', (req, res) => {
-  res.send('Hello world')
-})
-
-/*============== LISTENER ================*/
-
-app.listen(PORT, () => {
-  console.log('listening on port ' + PORT);
-})
