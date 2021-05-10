@@ -24,10 +24,12 @@ app.use(express.static('public'))
 
 /*============ CONTROLLERS =============*/
 
+const plantsController = require('./controllers/plants_controller.js')
+app.use('/plants', plantsController)
 
 /*============ ROUTES =============*/
 
-app.get('/boo', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Hello world')
 })
 
