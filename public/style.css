@@ -37,7 +37,7 @@ h2 {
   text-align: center;
 }
 
-#add-plant {
+.add-plant {
   background: whitesmoke;
   padding: 20px;
   text-align: center;
@@ -52,4 +52,12 @@ input, label {
   display: flex;
   justify-content: space-around;
   margin: 20px auto;
+}
+
+button, input[type="submit"] {
+  background: #F1E4E7;
+  font-family: "Raleway";
+  border: 1px solid gray;
+  padding: 5px 20px;
+  margin: 0 5px 10px 0;
 }
