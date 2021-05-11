@@ -39,6 +39,7 @@ class App extends React.Component {
 updatePlant = (event) => {
   event.preventDefault()
   const id = event.target.id
+  console.log(event.target.id);
   axios.put('/plants/' + id, this.state).then(
     (response) => {
       this.setState({
@@ -78,7 +79,7 @@ deletePlant = (event) => {
     return <div>
 
       <section className="add-plants">
-        <form onSubmit={this.handleSubmit} id="add-plant">
+        <form onSubmit={this.handleSubmit} className="add-plant">
         <h3>Add to The Garden</h3>
           <label htmlFor="name">Name</label><br/>
           <input
