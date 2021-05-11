@@ -78,8 +78,8 @@ deletePlant = (event) => {
     return <div>
 
       <section className="add-plants">
+        <form onSubmit={this.handleSubmit} id="add-plant">
         <h3>Add to The Garden</h3>
-        <form onSubmit={this.handleSubmit}>
           <label htmlFor="name">Name</label><br/>
           <input
             type="text"
@@ -122,49 +122,51 @@ deletePlant = (event) => {
           {this.state.plants.map(plant => {
             return (
               <li key={plant._id}>
-                <h3>{plant.name}</h3>
+                <h2>{plant.name}</h2>
                 <img src={plant.image} alt={plant.name} />
-                <details>
-                  <summary>Notes</summary>
-                    <p>Growing season: {plant.season}</p>
-                    <p>{plant.notes}</p>
-                </details>
-                <details>
-                  <summary>Edit / Delete</summary>
-                  <form id={plant._id} onSubmit={this.updatePlant}>
-                    <label htmlFor="name">Name</label><br/>
-                    <input
-                      type="text"
-                      id="name"
-                      onChange={this.handleChange}
-                    /><br/>
+                <div className="dropdowns">
+                  <details>
+                    <summary>Notes</summary>
+                      <p>Growing season: {plant.season}</p>
+                      <p>{plant.notes}</p>
+                  </details>
+                  <details>
+                    <summary>Edit / Delete</summary>
+                    <form id={plant._id} onSubmit={this.updatePlant}>
+                      <label htmlFor="name">Name</label><br/>
+                      <input
+                        type="text"
+                        id="name"
+                        onChange={this.handleChange}
+                      /><br/>
 
-                    <label htmlFor="image">Image</label><br/>
-                    <input
-                      type="text"
-                      id="image"
-                      onChange={this.handleChange}
-                    /><br/>
+                      <label htmlFor="image">Image</label><br/>
+                      <input
+                        type="text"
+                        id="image"
+                        onChange={this.handleChange}
+                      /><br/>
 
-                    <label htmlFor="notes">Notes</label><br/>
-                    <input
-                      type="text"
-                      id="notes"
-                      onChange={this.handleChange}
-                    /><br/>
+                      <label htmlFor="notes">Notes</label><br/>
+                      <input
+                        type="text"
+                        id="notes"
+                        onChange={this.handleChange}
+                      /><br/>
 
-                    <label htmlFor="season">Growing Season</label><br/>
-                    <input
-                      type="text"
-                      id="season"
-                      onChange={this.handleChange}
-                    /><br/>
+                      <label htmlFor="season">Growing Season</label><br/>
+                      <input
+                        type="text"
+                        id="season"
+                        onChange={this.handleChange}
+                      /><br/>
 
-                    <input type="submit" id="Submit Edits" />
+                      <input type="submit" id="Submit Edits" />
 
-                  </form>
-                  <button value={plant._id} onClick={this.deletePlant}>Delete</button>
-                </details>
+                    </form>
+                    <button value={plant._id} onClick={this.deletePlant}>Delete</button>
+                  </details>
+                </div>
               </li>
             )
           })}
