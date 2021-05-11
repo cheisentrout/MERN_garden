@@ -1,0 +1,55 @@
+body {
+  background-image: url("https://images.unsplash.com/photo-1584706959392-eb6270458621?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTJ8fGFic3RyYWN0JTIwc2ltcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60");
+  font-family: "raleway";
+  font-size: 16px;
+}
+
+img {
+  width: 55%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 20px;
+  margin: 10px;
+  background: #F1E4E7;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 3em;
+  color: #7D316E;
+}
+
+h1, h2, h3 {
+  font-family: "dancing script";
+  text-align: center;
+}
+
+h2 {
+  width: 100%;
+  text-align: center;
+}
+
+#add-plant {
+  background: whitesmoke;
+  padding: 20px;
+  text-align: center;
+}
+
+input, label {
+  margin: 10px;
+}
+
+.dropdowns {
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px auto;
+}

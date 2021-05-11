@@ -1,33 +1,20 @@
 /*============ DEPENDENCIES =============*/
 
 const express = require('express')
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
 /*============ CONFIGURATION =============*/
 
 const app = express()
-// require('dotenv').config()
-// const PORT = process.env.PORT
-// const MONGODB_URI = process.env.MONGODB_URI
+require('dotenv').config()
+const PORT = process.env.PORT
+const MONGODB_URI = process.env.MONGODB_URI
 
-// mongoose.connect(MONGODB_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useFindAndModify: false
-// })
-
-/*============ MONGOOSE ERR/SUCCESS =============*/
-
-// mongoose.connection.on('error', err =>
-//   console.log(
-//     err.message,
-//     ' is Mongod not running?/Problem with Atlas Connection?'
-//   )
-// )
-// mongoose.connection.on('connected', () =>
-//   console.log('mongo connected: ', MONGODB_URI)
-// )
-// mongoose.connection.on('disconnected', () => console.log('mongo disconnected'))
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+})
 
 /*============= MIDDLEWARE ==============*/
 
@@ -37,6 +24,8 @@ app.use(express.static('public'))
 
 /*============ CONTROLLERS =============*/
 
+const plantsController = require('./controllers/plants_controller.js')
+app.use('/plants', plantsController)
 
 /*============ ROUTES =============*/
 
@@ -46,6 +35,19 @@ app.get('/', (req, res) => {
 
 /*============== LISTENER ================*/
 
-app.listen(3000, () => {
-  console.log('listening on port 3000');
+app.listen(PORT, () => {
+  console.log('listening on port ' + PORT);
 })
+
+/*============ MONGOOSE ERR/SUCCESS =============*/
+
+mongoose.connection.on('error', err =>
+  console.log(
+    err.message,
+    ' is Mongod not running?/Problem with Atlas Connection?'
+  )
+)
+mongoose.connection.on('connected', () =>
+  console.log('mongo connected: ', MONGODB_URI)
+)
+mongoose.connection.on('disconnected', () => console.log('mongo disconnected'))
